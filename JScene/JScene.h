@@ -67,6 +67,7 @@ namespace JScene {
 	class Window;
 	class Joystick;
 	struct JColors_HSL;
+	struct Dynamic_Rect;
 
 	const std::string NO_IMAGE = "@$%$%~NO_IMAGE&&*!@%&$";
 	const std::string NO_VIDEO = "&*#@#@NO_VIDEO)()@#!@#";
@@ -104,6 +105,8 @@ namespace JScene {
 	int xwidth(const SDL_Rect& Rect);
 	int yheight(const SDL_Rect& Rect);
 	int ymidheight(const SDL_Rect& Rect);
+
+	double xwidth(Dynamic_Rect& Rect);
 
 	SDL_Color numberToRGB(uint32_t Number);
 	SDL_Color invertRGB(SDL_Color Color);
@@ -238,6 +241,10 @@ namespace JScene {
 		int h = 0;
 		double s = 0.0;
 		double l = 0.0;
+	};
+
+	struct Dynamic_Rect {
+		double x, y, w, h;
 	};
 
 	struct Text {
@@ -544,6 +551,7 @@ namespace JScene {
 			int setFont(std::string NewFont, int Size, SDL_Color FontColor);
 			int setFontSize(int Size);
 			void setFontColor(SDL_Color FontColor);
+			//
 			Text* addTextTexture(std::string TextID, std::string Text, int X, int Y, int Width, int Height, double Angle, TextType Fill, TextType Fit, int Buffer);
 			Text* getTextTexture(std::string TextID);
 			int writeText(std::string Text, int X, int Y);
@@ -559,6 +567,13 @@ namespace JScene {
 			int writeText(std::string Text, int X, int Y, int Width, int Height, double Angle, TextType Fill, TextType Fit, int Buffer);
 			int writeText(Text* Text, std::string StrText, int X, int Y, int Width, int Height, double Angle, TextType Fill, TextType Fit, int Buffer);
 			int writeTextDynamic(std::string Text, SDL_Rect Size, double Angle);
+			//
+			int getTextTextureWidth(std::string Text);
+			int getTextTextureWidth(std::string Text, int FontSize);
+			int getTextTextureHeight(std::string Text);
+			int getTextTextureHeight(std::string Text, int FontSize);
+			void queryTextTextureSize(int* TextSize, std::string Text);
+			void queryTextTextureSize(int* TextSize, std::string Text, int FontSize);
 
 			KeyState getKeyState(int Key);
 			bool checkInput(std::string Key, KeyState Expected, bool IncludeJoysticks);

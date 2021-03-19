@@ -80,6 +80,9 @@ int JScene::ymidheight(SDL_Rect& Rect) {
 int JScene::ymidheight(const SDL_Rect& Rect) {
 	return Rect.y + (Rect.h / 2);
 }
+double JScene::xwidth(JScene::Dynamic_Rect& Rect) {
+	return Rect.x + Rect.w;
+}
 
 SDL_Color JScene::numberToRGB(uint32_t Number) {
 	SDL_Color ret;
@@ -1597,6 +1600,10 @@ int JScene::Window::writeText(std::string Text, int X, int Y, int Width, int Hei
 }
 // TODO
 // - Dump unused textures
+// - Update text generation
+//   * Find better memory management for texture with same text but different positions
+//   * Textures can move or be written more than once
+//   * Maybe some sort of texture garbage collector for un-reused textures
 int JScene::Window::writeText(Text* Text, std::string StrText, int X, int Y, int Width, int Height, double Angle, TextType Fill, TextType Fit, int Buffer) {
 	std::string textid = generateTextTextureID(StrText, X, Y, Width, Height, Angle);
 
@@ -1656,6 +1663,50 @@ int JScene::Window::writeTextDynamic(std::string Text, SDL_Rect Size, double Ang
 	SDL_DestroyTexture(TextTexture);
 
 	return WindowSuccess;
+}
+
+int JScene::Window::getTextTextureWidth(std::string Text) {
+	int TextSize[2];
+	
+	queryTextTextureSize(TextSize, Text, Font.fontsize);
+	
+	return TextSize[0];
+}
+int JScene::Window::getTextTextureWidth(std::string Text, int FontSize) {
+	int TextSize[2];
+	
+	queryTextTextureSize(TextSize, Text, FontSize);
+	
+	return TextSize[0];
+}
+int JScene::Window::getTextTextureHeight(std::string Text) {
+	int TextSize[2];
+	
+	queryTextTextureSize(TextSize, Text, Font.fontsize);
+	
+	return TextSize[1];
+}
+int JScene::Window::getTextTextureHeight(std::string Text, int FontSize) {
+	int TextSize[2];
+	
+	queryTextTextureSize(TextSize, Text, FontSize);
+	
+	return TextSize[1];
+}
+void JScene::Window::queryTextTextureSize(int* TextSize, std::string Text) {
+	queryTextTextureSize(TextSize, Text, Font.fontsize);
+}
+void JScene::Window::queryTextTextureSize(int* TextSize, std::string Text, int FontSize) {
+	// Generate surface and texture
+	SDL_Surface* TextSurface = TTF_RenderText_Solid(Fonts.at(FontLocationMap[Font.font]).at(FontSize), Text.c_str(), Font.fontcolor);
+	SDL_Texture* TextTexture = SDL_CreateTextureFromSurface(SDLRenderer, TextSurface);
+
+	// Query for text size
+	SDL_QueryTexture(TextTexture, NULL, NULL, &TextSize[0], &TextSize[1]);
+
+	// Cleanup
+	SDL_FreeSurface(TextSurface);
+	SDL_DestroyTexture(TextTexture);
 }
 
 JScene::KeyState JScene::Window::getKeyState(int Key) {
