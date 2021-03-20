@@ -1,0 +1,85 @@
+<html>
+	<head>
+		<title>ProjectHoosman - Window.h Documentation</title>
+
+		<link rel="stylesheet" type="text/css" href="CSS/index.css">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+		<!-- API FILES -->
+		<script type="text/javascript" src="API/apis.js"></script>
+		<script type="text/javascript" src="Javascript/index.js"></script>
+	</head>
+	<body onload="Page_Loaded()" onresize="Page_Resized()">
+		<div id="sidebar">
+			<div id="title">
+				<h3>Project Hoosman</h3>
+				<h4>Game Engine</h4>
+			</div>
+			<div id="tabs">
+				<div class="tabitems">
+					<img class="itemicon" src="Images/home.png"/>
+					<a href=""><h2>Home</h2></a>
+				</div>
+				<div class="tabitems" id="Window">
+					<img class="itemicon" src="Images/application.png"></img>
+					<a href="#window.h" onclick="Display_Window_API()"><h2>Window.h</h2></a>
+					<div class="sidebar_items" id="Window_tabs"></div>
+				</div>
+				<div class="tabitems" id="Game">
+					<img class="itemicon" src="Images/game.png"></img>
+					<a href="#game.h" onclick="Display_Game_API()"><h2>Game.h</h2></a>
+					<div class="sidebar_items" id="Game_tabs"></div>
+				</div>
+				<div class="tabitems" id="Network">
+					<img class="itemicon" src="Images/network.png"></img>
+					<a href="#network.h" onclick="Display_Network_API()"><h2>Network.h</h2></a>
+					<div class="sidebar_items" id="Network_tabs"></div>
+				</div>
+			</div>
+		</div>
+		<div id="header">
+
+		</div>
+		<div id="content">
+			<div id="content_title">
+				<h1>API Documentation</h1>
+			</div>
+			<div id="content_panel">
+				<div class="cpanel_option">
+					<a href="#window.h" onclick="Display_Window_API()">
+						<img src="Images/application.png"/>
+						<div class="cpanel_text">
+							<h3>Window.h</h3>
+							<h5>Create interactive Windows applications</h5>
+						</div>
+					</a>
+				</div>
+				<div class="cpanel_option">
+					<a href="#game.h" onclick="Display_Game_API()">
+						<img src="Images/game.png"/>
+						<div class="cpanel_text">
+							<h3>Game.h</h3>
+							<h5>Create awesome 2D games for Windows</h5>
+						</div>
+					</a>
+				</div>
+				<div class="cpanel_option" onclick="Display_Network_API()">
+					<a href="#network.h">
+						<img src="Images/network.png"/>
+						<div class="cpanel_text">
+							<h3>Network.h</h3>
+							<h5>Connect applications together over different networks</h5>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div id="content_api">
+				
+			</div>
+		</div>
+		<div id="footer">
+			<h4>Made by Jordan Hoosman</h4>
+		</div>
+	</body>
+</html>

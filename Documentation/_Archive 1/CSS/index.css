@@ -1,0 +1,135 @@
+body {
+
+}
+
+/***** Side bar *****/
+#sidebar {
+	position: absolute;
+	min-width: 200px;
+	max-width: 220px;
+	width: 20%;
+	border: 1px solid;
+}
+#title {
+	text-align: center;
+}
+.tabitems {
+	margin-top: 20px;
+	margin-left: 15px;
+	height: 50px;
+}
+.tabitems img {
+	width: 50px;
+	height: 80%;
+	vertical-align: middle;
+}
+.tabitems h2{
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 7px;
+}
+
+/***** Top bar *****/
+#header {
+	position: relative;
+	box-sizing: border-box;
+	height: 100px;
+	border: 1px solid;
+}
+
+/***** Main content *****/
+.code_color_blue {
+	color: #157af7;
+}
+.code_color_green {
+	color: #1ae000;
+}
+.code_color_lgreen {
+	color: #B8D783;
+}
+.code_color_yellow {
+	color: #DCDCAA;
+}
+
+#content {
+	position: relative;
+	box-sizing: border-box;
+	padding: 25px;
+	border: 1px solid;
+	overflow-y: scroll;
+}
+#content_panel {
+	display: table;
+	margin: auto;
+	position: relative;
+}
+.cpanel_option {
+	position: relative;
+	border: 1px solid;
+	width: 250px;
+	padding: 15px;
+	display: inline-block;
+}
+.cpanel_option img {
+	width: 50px;
+	height: 50px;
+}
+.cpanel_text {
+	vertical-align: top;
+	width: 180px;
+	height: 50px;
+	display: inline-block;
+	margin-top: -20px;
+}
+.cpanel_text h3{
+	margin-bottom: 0px;
+}
+.cpanel_text h5 {
+	margin-top: 0px;
+	color: grey;
+}
+
+/* API */
+#api_constructor_title {
+
+}
+#api_constructor_function {
+	margin-top: -20px;
+}
+#api_constructor_parameters {
+	position: relative;
+}
+
+.info_api_containter {
+	margin-top: -35px;
+	margin-left: 40px;
+}
+.info_api_containter h2 {
+	color: #828282;
+}
+.info_title {
+	display: inline-block;
+}
+.info_toggle {
+	margin-left: 10px;
+	display:inline-block;
+}
+.info_toggle button {
+	width: 80px;
+	height: 20px;
+}
+.info_text {
+	margin-top: -30px;
+	margin-bottom: 35px;
+}
+.info_text p {
+	margin-top: -15px;
+}
+
+/***** Footer *****/
+#footer {
+	position: absolute;
+	bottom: 0px;
+	border: 1px solid;
+	text-align: right;
+}
